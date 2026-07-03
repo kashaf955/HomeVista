@@ -4,10 +4,15 @@ import Profile from "./Pages/Profile";
 import Signin from "./Pages/Signin";
 import SignUp from "./Pages/SignUp";
 import About from "./Pages/About";
+import Header from "./components/Header";
+import {FaSearch} from 'react-icons/fa';
+
+
 
 export default function App() {
   return (
     <BrowserRouter>
+    <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />

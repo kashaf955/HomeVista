@@ -1,7 +1,8 @@
-import {useState} from 'react'
-import {useNavigate} from 'react-router-dom'
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 import React from 'react'
+import OAuth from '../components/OAuth.jsx';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -46,9 +47,10 @@ export default function SignUp() {
         <input type="text" placeholder='Username' className='border border-red-800 rounded-md p-2 w-full mb-4' id='username' onChange={handleChange} />
         <input type="email" placeholder='Email' className='border border-red-800 rounded-md p-2 w-full mb-4' id='email' onChange ={handleChange} />
         <input type="password" placeholder='Password' className='border border-red-800  rounded-md p-2 w-full mb-4' id='password' onChange={handleChange}/>
-        <button disabled={loading} type="submit" className='bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase'>
+        <button disabled={loading} type="submit" className='bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-full'>
           {loading ? 'Signing Up...' : 'Sign Up'}
         </button>
+          <OAuth />
       </form>
       <div className='mt-3'>
         <p>Have an account?

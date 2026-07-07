@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
 import {signInStart, signInSuccess, signInFailure} from '../redux/user/userSlice.js'
 import React from 'react'
+import OAuth from '../components/OAuth.jsx';
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -47,6 +48,7 @@ export default function SignIn() {
           <button disabled={loading} type="submit" className='bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase items-center w-full'>
             {loading ? 'Signing In...' : 'Sign In'}
           </button>
+          <OAuth />
         </form>
         <div className='mt-3 text-center'>
           <p>Do not have an account?

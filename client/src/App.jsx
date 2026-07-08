@@ -6,6 +6,7 @@ import SignUp from "./Pages/SignUp";
 import About from "./Pages/About";
 import Header from "./components/Header";
 import {FaSearch} from 'react-icons/fa';
+import PrivateRouter from "./components/PrivateRouter.jsx";
 
 
 
@@ -15,10 +16,12 @@ export default function App() {
     <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/about" element={<About />} />
+        <Route element={<PrivateRouter/>} > 
+         <Route path="/profile" element={<Profile />} />
+        </Route> 
       </Routes>
     </BrowserRouter>
   );

@@ -31,7 +31,7 @@ export const signin = async (req, res, next) => {
       httpOnly: true,
       })
       .status(200)
-      .json({otherDetails});
+      .json(otherDetails);
 } 
   catch (error) {
     next(error);
@@ -49,7 +49,7 @@ export const google = async (req, res, next) => {
         httpOnly: true,
       })
         .status(200)
-        .json({ otherDetails });
+        .json(otherDetails);
     } else {
       const generatedPassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).toUpperCase().slice(-8);
       const hashedPassword = bcrypt.hashSync(generatedPassword, 10);
@@ -67,7 +67,7 @@ export const google = async (req, res, next) => {
           httpOnly: true,
         })
         .status(200)
-        .json({ otherDetails });
+        .json(otherDetails);
     }
   } 
   catch (error) {

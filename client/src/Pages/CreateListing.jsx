@@ -82,7 +82,7 @@ export default function CreateListing() {
           </p>
           <div className="flex gap-4">
             <input className= 'p-3' type="file" id="images" accept="images/*" multiple/>
-            <button type="submit" className='bg-black text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase items-center w-full'>
+            <button className='bg-black text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase items-center w-full'>
             Upload
           </button>
           </div>

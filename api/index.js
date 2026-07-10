@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
+import listingRouter from './routes/listing.js'
 
 mongoose.connect(process.env.MONGO_URI,{
   dbName: "HomeVista",
@@ -21,6 +22,8 @@ app.listen(3000, () => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/listing", listingRouter);
+
 
 
 app.use((err, req, res, next) => {

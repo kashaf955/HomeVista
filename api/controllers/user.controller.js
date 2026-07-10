@@ -7,16 +7,17 @@ export const test = (req, res) => {
   res.send("Api is working!");
 };
 
-export const updateUser = async(req, res,next) => {
-  if (req.user.id !== req.params.id)
-    return next(errorHandler(401, "YOU CAN ONLY UPDATE YOUR OWN ACCOUNT"))
+export const updateUser = async (req, res, next) => {
+  if (req.user.id !== req.params.id) {
+    return next(errorHandler(401, "YOU CAN ONLY UPDATE YOUR OWN ACCOUNT"));
+  }
 
   try {
-    if(req.body.password)
-    {
-      req.body.password = bcryptjs.hashsync(req.body.password, 10)
+    if (req.body.password) {
+      req.body.password = bcryptjs.hashSync(req.body.password, 10);
     }
-    const updateUser = await User.findByIdAndUpdate(
+
+    const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
         $set: {
@@ -26,11 +27,16 @@ export const updateUser = async(req, res,next) => {
           avatar: req.body.avatar,
         },
       },
-      { returnDocument: "after" }
-    )
+      { returnDocument: "after", runValidators: true }
+    );
 
-    const {password, ...otherDetails} = updateUser._doc;
+    if (!updatedUser) {
+      return next(errorHandler(404, "User not found"));
+    }
+
+    const { password, ...otherDetails } = updatedUser._doc;
+    res.status(200).json(otherDetails);
   } catch (error) {
-    next(error)
+    next(error);
   }
 };

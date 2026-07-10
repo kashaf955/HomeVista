@@ -7,6 +7,7 @@ import About from "./Pages/About";
 import Header from "./components/Header";
 import {FaSearch} from 'react-icons/fa';
 import PrivateRouter from "./components/PrivateRouter.jsx";
+import CreateListing from "./Pages/CreateListing.jsx";
 
 
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route element={<PrivateRouter/>} > 
          <Route path="/profile" element={<Profile />} />
+        <Route path="/create-listing" element={<CreateListing />} />
         </Route> 
       </Routes>
     </BrowserRouter>

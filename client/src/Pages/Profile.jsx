@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -165,14 +165,14 @@ export default function Profile() {
           placeholder="Username"
           defaultValue={currentUser.username}
           id="username"
-          className="border border-red-800 rounded-md p-2 w-full mb-4"
+          className="border rounded-md p-2 w-full mb-4 hover:border-red-800"
           id="username"
           onChange={handleChange}
         />
         <input
           type="email"
           placeholder="Email"
-          className="border border-red-800 rounded-md p-2 w-full mb-4"
+          className="border rounded-md p-2 w-full mb-4 hover:border-red-800"
           defaultValue={currentUser.email}
           id="email"
           onChange={handleChange}
@@ -180,7 +180,7 @@ export default function Profile() {
         <input
           type="password"
           placeholder="Password"
-          className="border border-red-800  rounded-md p-2 w-full mb-4"
+          className="border rounded-md p-2 w-full mb-4 hover:border-red-800"
           id="password"
           onChange={handleChange}
         />
@@ -190,6 +190,9 @@ export default function Profile() {
         >
           {loading ? 'Loading...' : 'Update'}
         </button>
+        <Link className="bg-black text-white p-3 rounded-lg uppercase text-center hover:opacity-40" to={"/create-listing"}>
+        Create Listing
+        </Link>
       </form>
       <div className="mt-4 flex justify-between">
         <span onClick= {handleDeleteUser} className="text-shadow-black font-extrabold cursor-pointer">

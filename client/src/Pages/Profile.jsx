@@ -264,7 +264,9 @@ export default function Profile() {
                     <p className="text-black font-bold truncate">{listing.name}</p>
                   </Link>
                   <div className="flex gap-2 mt-3">
+                    <Link to={`/update-listing/${listing._id}`}>
                     <button className="bg-black text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-full">Update</button>
+                    </Link>
                      <button onClick={() => handleListingDelete(listing._id)} className="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-full">Delete</button>
                   </div>
                 </div>

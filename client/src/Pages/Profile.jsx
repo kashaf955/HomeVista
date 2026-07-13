@@ -29,8 +29,11 @@ export default function Profile() {
   const [filePerc, setFilePerc] = useState(0);
   const [fileUploadError, setFileUploadError] = useState(false);
   const [formData, setFormData] = useState({});
+  const [showListingsError, setShowListingsError] = useState(false);
   const dispatch = useDispatch();
   const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [userListings, setUserListings] = useState([
+  ]);
 
   useEffect(() => {
     if (!file) return;
@@ -123,6 +126,20 @@ export default function Profile() {
     }
 
   }
+  const handleShowListings = async() =>{
+    try {
+      setShowListingsError(false);
+      const res = await(fetch(`/api/user/listings/${currentUser._id}`));
+      const data = await res.json();
+      if (data.success == false){
+        setShowListingsError(true);
+        return;
+      }
+      setUserListings(data);
+    } catch (error) {
+      setShowListingsError(true);
+    }
+  }
 
   return (
     <div className="p-3 max-w-lg mx-auto">
@@ -204,7 +221,43 @@ export default function Profile() {
       </div>
       <p className="text-red-600 mt-2">{error ? error : ''}</p>
       <p className="text-green-600 mt-2">{updateSuccess ? 'User is Updated Successfully' : ''}</p>
+      <button onClick={handleShowListings} className="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-full">Show Listings</button>
+      <p className="text-red-600 mt-2">{showListingsError ? 'Error Showing Listings': ''}</p>
 
+      {userListings && userListings.length > 0 &&
+      <div>
+        <h1 className="text-center font-bold m-7 text-2xl">Your Listings</h1> 
+        
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {userListings.map((listing) => {
+            const image = listing.imageURLs?.[0] || listing.imageUrls?.[0] || "";
+            return (
+              <div key={listing._id} className="rounded-lg border border-gray-200 overflow-hidden shadow-sm mt-3">
+                <Link to={`/listing/${listing._id}`}>
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={listing.name || "Listing Cover"}
+                      className="h-48 w-full object-cover"
+                    />
+                  ) : (
+                    <div className="h-48 w-full bg-gray-200" />
+                  )}
+                </Link>
+                <div className="p-3">
+                  <Link to={`/listing/${listing._id}`}>
+                    <p className="text-black font-bold truncate">{listing.name}</p>
+                  </Link>
+                  <div className="flex gap-2 mt-3">
+                    <button className="bg-black text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-full">Update</button>
+                     <button className="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-full">Delete</button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>}
     </div>
   );
 }

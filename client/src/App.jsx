@@ -9,6 +9,7 @@ import {FaSearch} from 'react-icons/fa';
 import PrivateRouter from "./components/PrivateRouter.jsx";
 import CreateListing from "./Pages/CreateListing.jsx";
 import UpdateListing from "./Pages/UpdateListing.jsx";
+import Listing from "./Pages/Listing.jsx";
 
 
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/about" element={<About />} />
+        <Route path="/listing/:listingId" element={<Listing />} />
         <Route element={<PrivateRouter/>} > 
          <Route path="/profile" element={<Profile />} />
         <Route path="/create-listing" element={<CreateListing />} />

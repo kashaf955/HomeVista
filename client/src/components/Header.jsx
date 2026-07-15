@@ -20,9 +20,9 @@ export default function Header() {
       <ul className="flex flex-wrap items-center gap-10">
         <Link to="/" className="text-black-600 hidden sm:inline hover:text-red-800">Home</Link>
         <Link to="/about" className="text-black-600 hidden sm:inline hover:text-red-800">About</Link>
-        <Link to="/profile" className="text-black-600 hidden sm:inline hover:text-red-800">
+        <Link to="/profile" className="text-black-600 inline-flex items-center hover:text-red-800">
           {currentUser ? (
-            <img src={currentUser.avatar} alt="profile" className='h-12 rounded-full' />
+            <img src={currentUser.avatar} alt="profile" className='h-10 sm:h-12 rounded-full' />
           ) : (
             "Sign In"
           )}

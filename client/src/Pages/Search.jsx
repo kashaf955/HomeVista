@@ -247,11 +247,14 @@ export default function Search() {
               <Listingitem key={listing._id} listing={listing} />
             ))}
 
-            {showMore && (
-              <button className="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-1/2 text-center mx-auto" onClick={onShowMoreClick}>
-                Show More
-              </button>
-            )}
+          {showMore && (
+            <button
+              className="bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-600 uppercase w-1/2 mx-auto"
+              onClick={onShowMoreClick}
+            >
+              Show More
+            </button>
+          )}
         </div>
       </div>
     </div>

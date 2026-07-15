@@ -28,11 +28,13 @@ export default function Header() {
 
   return (
     <header className="bg-gray-100 shadow-md-red-950">
-      <div className="flex justify-between gap-4 items-center max-w-6xl mx-auto p-3">
-        <h1 className="font-bold text-sm sm:text-2xl flex flex-wrap">
-          <span className="text-red-800">Home</span>
-          <span className="text-gray-800">Vista</span>
-        </h1>
+      <div className="flex justify-between gap-4 items-center max-w-[1300px] mx-auto p-3">
+        <Link to="/">
+          <h1 className="font-bold text-sm sm:text-2xl flex flex-wrap">
+            <span className="text-red-800">Home</span>
+            <span className="text-gray-800">Vista</span>
+          </h1>
+        </Link>
         <form onSubmit={handleSubmit} className="bg-gray-200 p-2 rounded-md border border-red-800 flex items-center gap-2">
           <input
             type="text"

@@ -6,12 +6,15 @@ import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
 import listingRouter from './routes/listing.js'
+import path from "path";
 
 mongoose.connect(process.env.MONGO_URI,{
   dbName: "HomeVista",
 })
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB connection error:", err));
+
+  const __dirname = path.resolve();
 
 const app = express();  
 app.use(express.json());
@@ -24,7 +27,10 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/listing", listingRouter);
 
-
+app.use(express.static(path.join(__dirname, "/client/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

@@ -37,7 +37,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Search..."
-            className="bg-transparent border-none focus:outline-none text-red-800 w-24 sm:w-48"
+            className="bg-transparent border-none focus:outline-none w-24 sm:w-48"
             value={searchTerm}
             onChange={(e) =>setSearchTerm(e.target.value)}
           />

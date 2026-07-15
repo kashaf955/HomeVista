@@ -74,8 +74,16 @@ export default function Listing() {
           )}
           <div className="w-[80%] mx-auto">
             <h1 className="mt-5 mb-5 text-2xl font-semibold">
-              {listing.name} - ${listing.regularprice}
+              {listing.name} - $
+              {listing.offer
+                ? (+listing.discountprice).toLocaleString("en-US")
+                : (+listing.regularprice).toLocaleString("en-US")}
               {listing.type === "rent" ? "/month" : ""}
+              {listing.offer && (
+                <span className="text-gray-500 line-through ml-2 text-xl font-normal">
+                  ${( +listing.regularprice).toLocaleString("en-US")}
+                </span>
+              )}
             </h1>
             <div className="flex items-center mb-4">
               <AiFillEnvironment className="mr-2 size-5 text-green-600" />
@@ -85,11 +93,16 @@ export default function Listing() {
               <p className="bg-red-800 w-full max-w-[200px] text-white text-center p-1 rounded-md">
                 {listing.type === "rent" ? "For Rent" : "For Sale"}
               </p>
-              {listing.offer && (
-                <p className="bg-black w-full max-w-[200px] text-white text-center p-1 rounded-md">
-                  ${+listing.regularprice - +listing.discountprice} discount
-                </p>
-              )}
+              {listing.offer &&
+                +listing.regularprice > +listing.discountprice && (
+                  <p className="bg-black w-full max-w-[200px] text-white text-center p-1 rounded-md">
+                    $
+                    {(
+                      +listing.regularprice - +listing.discountprice
+                    ).toLocaleString("en-US")}{" "}
+                    discount
+                  </p>
+                )}
             </div>
             <p className="text-justify">
               <span className="font-semibold text-black">Description - </span>

@@ -14,7 +14,8 @@ A full-stack real estate web app for browsing, searching, and managing property 
 - Search and filter by type, offer, parking, furnished, and sort order
 - Listing detail pages with image carousel
 - Home page with recent offers, rent, and sale listings
-- Profile management and image uploads (Firebase Storage)
+- Profile management
+- image uploads (Firebase Storage)
 - Responsive UI with Tailwind CSS
 
 ---

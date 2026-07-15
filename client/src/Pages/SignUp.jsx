@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 
 import React from 'react'
 import OAuth from '../components/OAuth.jsx';
+import signupImg from '../assets/SignUp.jpg';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -40,7 +41,7 @@ export default function SignUp() {
 
   return (
     <div className='flex flex-col md:flex-row items-center max-w-6xl mx-auto p-6 md:p-10'>
-       <img src="src/assets/SignUp.jpg" alt="Real Estate" className='rounded-lg shadow-lg w-full md:w-1/2 h-72 md:h-80 mb-6 md:mb-0 md:mr-6 object-cover' />
+       <img src={signupImg} alt="Real Estate" className='rounded-lg shadow-lg w-full md:w-1/2 h-72 md:h-80 mb-6 md:mb-0 md:mr-6 object-cover' />
        <div className='w-full md:w-1/2 p-4 md:p-10 text-left'>
       <h1 className='text-3xl text-left font-bold mb-4 max-md:text-xl'>Create An Account</h1>
       <form onSubmit={handleSubmit}>

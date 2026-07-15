@@ -8,6 +8,7 @@ import {
 } from "../redux/user/userSlice.js";
 import React from "react";
 import OAuth from "../components/OAuth.jsx";
+import signinImg from "../assets/Signin.jpg";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
@@ -43,8 +44,8 @@ export default function SignIn() {
 
   return (
     <div
-      className="flex items-center justify-center min-h-screen p-6 md:p-10 bg-image bg-cover bg-center"
-      style={{ backgroundImage: "url('src/assets/Signin.jpg')" }}
+      className="flex items-center justify-center min-h-screen p-6 md:p-10 bg-cover bg-center"
+      style={{ backgroundImage: `url(${signinImg})` }}
     >
       <div className="w-full max-w-md p-6 md:p-10 bg-white/90 rounded-xl shadow-lg">
         <h1 className="text-3xl text-center font-bold mb-4 max-md:text-xl">

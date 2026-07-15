@@ -1,6 +1,6 @@
 import React from "react";
 import heroImg from "../assets/Home.png";
-import aboutImg from "../assets/signin.jpg";
+import aboutImg from "../assets/Signin.jpg";
 
 export default function About() {
   return (
